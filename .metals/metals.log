@@ -2,3 +2,5 @@
 [0m2021.07.07 21:56:01 INFO  time: initialize in 3.89s[0m
 [0m2021.07.07 21:56:02 WARN  Build server is not auto-connectable.[0m
 [0m2021.07.07 21:56:02 WARN  no build tool detected in workspace 'C:\Users\anildwa\source\repos\aml-cli-v2-r'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+Jul 07, 2021 10:32:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
