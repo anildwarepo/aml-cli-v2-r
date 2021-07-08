@@ -87,4 +87,4 @@ The job should complete with the below output.
 
 Once the job complete, the model.rds should be available in the ADLS Gen2 container. 
 
-!(assets/adlsoutput.png)
+![](assets/adlsoutput.png)
