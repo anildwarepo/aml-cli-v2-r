@@ -1,8 +1,10 @@
 ## ADLS Gen2 integration with R script using AML Compute Instance and AML CLI V2
 
+Currently there is limited support for R script to integrate with ADLS Gen2 storage using MSI. This is an interim approach till MSI support is natively added to AML Compute Instance and Read/Write support for ADLS Gen2 in AML CLI 2.0.
+
 ### With AML CLI V2
 
-This section shows how we can use R script to read/write files from ADLS Gen2. Currently there is limited support for R script to integrate with ADLS Gen2 storage using MSI. This is the interim approach till MSI support is natively added to AML Compute Instance and Read/Write support for ADLS Gen2 in AML CLI 2.0.
+This section shows how we can use R script to read/write files from ADLS Gen2. Here the R script uses Service Principal and uses AzureStor R package to integrate with ADLS Gen2. We will use AML CLI V2.0 to submit R script as jobs to AML Compute Cluster. 
 
 
 #### Prerequisites
@@ -92,3 +94,31 @@ Once the job complete, the model.rds should be available in the ADLS Gen2 contai
 
 
 ### With AML Compute Instance
+
+In this section we will configure AML Compute Instance so that the R Script can integrate with ADLS Gen2 storage to Read/Write files. 
+
+The same script in this Repo can be used to in R Studio in AML Compute Instance to integrate with ADLS Gen2. Here are few configuration steps in AML Compute Instance. 
+
+- Launch R Studio from AML Compute Instance
+- In the console window, install the below R packages
+
+        install.packages(c('AzureStor'), repos = 'https://cloud.r-project.org/')
+        install.packages(c('AzureAuth'), repos = 'https://cloud.r-project.org/')
+
+- In the terminal window, create file to store Service Principal, Secret and Tenant details. 
+
+        touch r1.env
+        echo 'TENANT="<tenant guid>"' >> r1.env
+        echo 'APPID="<app id guid>"' >> r1.env
+        echo 'CLIENTSECRET="<client secret>"' >> r1.env
+
+- In the R script, use readRenviron("r1.env") to load config from r1.env created in the above step. 
+
+The rest of the R script is straight forward which does the below. 
+
+- Request AAD auth token using SP and Secret
+- Downloads accidents.Rd from ADLS Gen2 container
+- Runs GLM prediction alogrithm and create model.rds
+- Uploads model.rds to output path on the container
+
+
