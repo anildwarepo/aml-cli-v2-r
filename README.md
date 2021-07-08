@@ -2,7 +2,7 @@
 
 Currently there is limited support for R script to integrate with ADLS Gen2 storage using MSI. This is an interim approach till MSI support is natively added to AML Compute Instance and Read/Write support for ADLS Gen2 in AML CLI 2.0.
 
-### With AML CLI V2
+### With AML CLI V2 - Batch mode
 
 This section shows how we can use R script to read/write files from ADLS Gen2. Here the R script uses Service Principal and uses AzureStor R package to integrate with ADLS Gen2. We will use AML CLI V2.0 to submit R script as jobs to AML Compute Cluster. 
 
@@ -93,7 +93,7 @@ Once the job complete, the model.rds should be available in the ADLS Gen2 contai
 ![](assets/adlsoutput.png)
 
 
-### With AML Compute Instance
+### With AML Compute Instance - Interactive mode
 
 In this section we will configure AML Compute Instance so that the R Script can integrate with ADLS Gen2 storage to Read/Write files. 
 
