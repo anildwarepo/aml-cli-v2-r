@@ -122,3 +122,10 @@ The rest of the R script is straight forward which does the below.
 - Uploads model.rds to output path on the container
 
 
+### With AML Pipeline - Batch mode
+
+In this section we execute the same R scrip using AML Pipelines. This is useful when you would like kickoff the R script as part of Azure Data Factory Pipelines using the ADF AML Pipeline Activity. 
+
+The r-pipeline.ipynb notebook creates an AML pipeline in the AML workspace that uses CommandStep. The CommandStep executes any provided script, in this case, R script. We are also providing the same Dockerfile. The output of the AML Pipeline is shown below. 
+
+![](assets/r-pipeline-status.png)
