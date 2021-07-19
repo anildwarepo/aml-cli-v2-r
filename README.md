@@ -135,14 +135,15 @@ The r-pipeline.ipynb notebook creates an AML pipeline in the AML workspace that 
 
 In this section we execute the same R script using the ![Component based AML Pipelines](https://github.com/Azure/azureml-previews/tree/main/previews/pipelines).
 
-Two new artifacts are used here
-    pipeline_job.yml
-    r_component.yml
+Two artifacts are used here
+    
+    r_component.yml # defines a new Component Type that specifies the R script and the Dockerfile. 
+    pipeline_job.yml # uses the r_component.yml to create the component pipeline.  
+    
+    az ml job create -f pipeline_job.yml --stream -g <ml resource group> -w <ml workspace name>
 
-r_component defines a new Component Type that specifies the R script and the Dockerfile.
-pipeline_job.yml uses the r_component.yml to create the component pipeline. 
-This creates a new experiment which can be published as a pipeline endpoint. This pipeline endpoint can be called from Azure Data Factory. 
 
+This creates a new experiment which can be published as a pipeline endpoint. This pipeline endpoint can be invoked from Azure Data Factory. 
 Currently the pipeline created can be published using the Azure ML Studion as shown below. 
 
 ![](assets/publishpipeline.png)
