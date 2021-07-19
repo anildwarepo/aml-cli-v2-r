@@ -1,0 +1,17 @@
+type: command_component
+
+name: r_command_component
+display_name: r_command_component
+version: 1
+
+code:
+  local_path: ./src
+
+environment:
+  docker:
+    build:
+      dockerfile: file:Dockerfile
+
+
+command: >-
+  Rscript adlsgen2.R

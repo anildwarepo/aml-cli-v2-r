@@ -1,0 +1,9 @@
+type: pipeline_job
+
+jobs:
+  r_pipeline_job:
+    type: component_job
+    component: file:./r_component.yml
+    compute:
+      target: azureml:cpucluster2
+

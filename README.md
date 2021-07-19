@@ -124,8 +124,25 @@ The rest of the R script is straight forward which does the below.
 
 ### With AML Pipeline - Batch mode
 
-In this section we execute the same R scrip using AML Pipelines. This is useful when you would like kickoff the R script as part of Azure Data Factory Pipelines using the ADF AML Pipeline Activity. 
+In this section we execute the same R script using AML Pipelines. This is useful when you would like kickoff the R script as part of Azure Data Factory Pipelines using the ADF AML Pipeline Activity. 
 
 The r-pipeline.ipynb notebook creates an AML pipeline in the AML workspace that uses CommandStep. The CommandStep executes any provided script, in this case, R script. We are also providing the same Dockerfile. The output of the AML Pipeline is shown below. 
 
 ![](assets/r-pipeline-status.png)
+
+
+### With AML CLI V2 pipelines - Batch mode
+
+In this section we execute the same R script using the ![Component based AML Pipelines](https://github.com/Azure/azureml-previews/tree/main/previews/pipelines).
+
+Two new artifacts are used here
+    pipeline_job.yml
+    r_component.yml
+
+r_component defines a new Component Type that specifies the R script and the Dockerfile.
+pipeline_job.yml uses the r_component.yml to create the component pipeline. 
+This creates a new experiment which can be published as a pipeline endpoint. This pipeline endpoint can be called from Azure Data Factory. 
+
+Currently the pipeline created can be published using the Azure ML Studion as shown below. 
+
+![](assets/publishpipeline.png)
