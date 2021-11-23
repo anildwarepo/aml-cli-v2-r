@@ -1,0 +1,12 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+inputs:
+  read_write:
+    folder: azureml://datastores/accidentsdatastore/paths/accidentdata
+    mode: rw_mount
+code: 
+  local_path: src
+command: >-
+  Rscript adlsgen2-withdata-rwmode.R
+  --data ${{inputs.read_write}}
+environment: azureml:r-script:1
+compute: azureml:cpucluster2
